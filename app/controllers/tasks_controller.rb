@@ -4,7 +4,6 @@ class TasksController < ApplicationController
   
   
   def index
-      @task = current_user.tasks.build
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
   end
 
@@ -51,9 +50,6 @@ class TasksController < ApplicationController
   
   private
   
-  def set_task
-    @task = Task.find(params[:id])
-  end
 
   # Strong Parameter
   def task_params
